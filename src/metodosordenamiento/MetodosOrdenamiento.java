@@ -95,7 +95,24 @@ public class MetodosOrdenamiento {
                             for (i = 0; i < v.length; i++) {
                                 System.out.println("Vector ordenado: " + v[i]);
                             }
-                        long TiemF = System.currentTimeMillis();
+                            long TiemF = System.currentTimeMillis();
+                            long Milisegund = TiemF - TiemI;
+                            long Ho = Milisegund / 3600000;
+                            long Restoho = Milisegund % 3600000;
+                            long Minu = Restoho / 60000;
+                            long Restominu = Restoho % 60000;
+                            long Segun = Restominu / 1000;
+                            long Restosegun = Restominu % 1000;
+                            System.out.println("El tiempo gastado en ordenar el vector fue de: Hora: " + Ho + " Minutos: " + Minu + " Segundos: " + Segun + " Milisegundos: " + Restosegun);
+                            break;
+                        case 5:
+                            obj2.heapSort(vec1, vec1.length);
+                            long TiemI = System.currentTimeMillis();
+                            v = obj2.OrdenaMerge(vec1);
+                            for (i = 0; i < v.length; i++) {
+                                System.out.println("Vector ordenado: " + v[i]);
+                            }
+                            long TiemF = System.currentTimeMillis();
                             long Milisegund = TiemF - TiemI;
                             long Ho = Milisegund / 3600000;
                             long Restoho = Milisegund % 3600000;
@@ -114,8 +131,57 @@ public class MetodosOrdenamiento {
                 Resp1 = sc.next();
                 Resp1 = Resp1.toUpperCase();
             } while (Resp1.equals("S"));
-            //,jgljkhv;.m,nblkjb
         }
     }
 
+}
+
+public class Heapsort {
+
+    /**
+     * The main method illustrates the use of a heapsort to sort a small array.
+     * The <CODE>String</CODE> arguments (<CODE>args</CODE>) are not used in
+     * this implementation.
+     *
+     */
+    public static void main(String[] args) {
+        final String BLANKS = "  "; // A String of two blanks
+        int i;                      // Array index
+
+        int[] data = {80, 10, 50, 70, 60, 90, 20, 30, 40, 0};
+
+        // Print the array before sorting:
+        System.out.println("Here is the entire original array:");
+        for (i = 0; i < data.length; i++) {
+            System.out.print(data[i] + BLANKS);
+        }
+        System.out.println();
+
+        // Sort the numbers, and print the result with two blanks after each number.
+        heapsort(data, data.length);
+        System.out.println("After sorting, the numbers are:");
+        for (i = 0; i < data.length; i++) {
+            System.out.print(data[i] + BLANKS);
+        }
+        System.out.println();
+    }
+
+    /**
+     * This method cannot be used until the student implements
+     * <CODE>makeHeap</CODE> and <CODE>reheapifyDown</CODE>. Sort an array of
+     * integers from smallest to largest, using a heapsort algorithm.
+     *
+     * @param <CODE>data</CODE> the array to be sorted
+     * @param <CODE>n</CODE> the number of elements to sort, (from
+     * <CODE>data[0]</CODE> through <CODE>data[n-1]</CODE>)
+     * <dt><b>Precondition:</b><dd>
+     * <CODE>data</CODE> has at least <CODE>n</CODE> elements.
+     * <dt><b>Postcondition:</b><dd>
+     * If <CODE>n</CODE> is zero or negative then no work is done. Otherwise,
+     * the elements of </CODE>data</CODE> have been rearranged so that
+     * <CODE>data[0] &lt= data[1] &lt= ... &lt= data[n-1]</CODE>.
+     * @exception ArrayIndexOutOfBoundsException Indicates that
+     * <CODE>data</CODE> has fewer than </CODE>n</CODE> elements.
+     *
+     */
 }
