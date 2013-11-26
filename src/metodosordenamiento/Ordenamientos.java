@@ -94,7 +94,7 @@ public class Ordenamientos {
         
     }
     
-    public void OrdenaMerge(int[] L) {
+    public int [] OrdenaMerge(int[] L) {
         int n = L.length;
  
         if (n > 1){
@@ -110,6 +110,7 @@ public class Ordenamientos {
             }
             L = merge(OrdenaMerge(L1), OrdenaMerge(L2));
         }
+        return L;
     }
  
     public int[] merge(int[] L1, int[] L2) {
