@@ -72,21 +72,23 @@ public class MetodosOrdenamiento {
                         System.out.println("El tiempo gastado en ordenar el vector fue de: Hora: " + Hora + " Minutos: " + Minuto + " Segundos: " + Segundo + " Milisegundos: " + Restosegundo);
                         break;
                     case 3:
-                        long TiempoI = System.currentTimeMillis();
+                        long TiempI = System.currentTimeMillis();
                         obj2.Quick(vec1, 0, vec1.length - 1);
                         for (i = 0; i < vec1.length; i++) {
                             System.out.println("Vector ordenado: " + vec1[i]);
                         }
-                        long TiempoF = System.currentTimeMillis();
-                        long Milisegundos = TiempoF - TiempoI;
-                        long Hora = Milisegundos / 3600000;
-                        long Restohora = Milisegundos % 3600000;
-                        long Minuto = Restohora / 60000;
-                        long Restominuto = Restohora % 60000;
-                        long Segundo = Restominuto / 1000;
-                        long Restosegundo = Restominuto % 1000;
-                        System.out.println("El tiempo gastado en ordenar el vector fue de: Hora: " + Hora + " Minutos: " + Minuto + " Segundos: " + Segundo + " Milisegundos: " + Restosegundo);
+                        long TiempF = System.currentTimeMillis();
+                        long Milisegundo = TiempF - TiempI;
+                        long Hor = Milisegundo / 3600000;
+                        long Restohor = Milisegundo % 3600000;
+                        long Minut = Restohor / 60000;
+                        long Restominut = Restohor % 60000;
+                        long Segund = Restominut / 1000;
+                        long Restosegund = Restominut % 1000;
+                        System.out.println("El tiempo gastado en ordenar el vector fue de: Hora: " + Hor + " Minutos: " + Minut + " Segundos: " + Segund + " Milisegundos: " + Restosegund);
                         break;
+                    case 4: 
+                        obj2.OrdenaMerge(vec1);
                 }
                 System.out.println("Desea comparar el mismo vector con otro metodo de ordenamiento?(S/N)");
                 Resp = sc.next();
