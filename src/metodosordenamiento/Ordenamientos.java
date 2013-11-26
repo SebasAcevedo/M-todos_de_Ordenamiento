@@ -5,6 +5,7 @@
  */
 package metodosordenamiento;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 
 /**
@@ -13,12 +14,11 @@ import java.util.Arrays;
  */
 public class Ordenamientos {
 
-    public void radix(int vec[]) {
-
-        if (vec.length == 0) {
+    public static void radix(int[] n) {
+        if (n.length == 0) {
             return;
         }
-        int[][] np = new int[vec.length][2];
+        int[][] np = new int[n.length][2];
         int[] q = new int[0x100];
         int i, j, k, l, f = 0;
         for (k = 0; k < 4; k++) {
@@ -29,8 +29,8 @@ public class Ordenamientos {
             for (i = 0; i < q.length; i++) {
                 q[i] = -1;
             }
-            for (f = i = 0; i < vec.length; i++) {
-                j = ((0xFF << (k << 3)) & vec[i]) >> (k << 3);
+            for (f = i = 0; i < n.length; i++) {
+                j = ((0xFF << (k << 3)) & n[i]) >> (k << 3);
                 if (q[j] == -1) {
                     l = q[j] = f;
                 } else {
@@ -42,12 +42,12 @@ public class Ordenamientos {
                     l = np[l][1];
                 }
                 f = np[f][1];
-                np[l][0] = vec[i];
+                np[l][0] = n[i];
                 np[l][1] = -1;
             }
             for (l = q[i = j = 0]; i < 0x100; i++) {
                 for (l = q[i]; l != -1; l = np[l][1]) {
-                    vec[j++] = np[l][0];
+                    n[j++] = np[l][0];
                 }
             }
         }
@@ -152,44 +152,44 @@ public class Ordenamientos {
         return L;
     }
 
-   private void heapSort(int a[],int n)
-    {
+    public void heapSort(int a[], int n) {
         buildheap(a, n);
-        while (n>1)
-        {
+        while (n > 1) {
             n--;
-            exchange (0, n, a);
-            downheap (0, a, n);
-        } 
-    }
-
-    private void buildheap(int a[],int n)
-    {
-        for (int v=n/2-1; v>=0; v--)
-            downheap (v, a, n);
-    }
-
-    private void downheap(int v, int a[], int n)
-    {
-        int w=2*v+1;    // first descendant of v
-        while (w<n)
-        {
-            if (w+1<n)    // is there a second descendant?
-                if (a[w+1]>a[w]) w++;
-            // w is the descendant of v with maximum label
-
-            if (a[v]>=a[w]) return;  // v has heap property
-            // otherwise
-            exchange(v, w, a);  // exchange labels of v and w
-            v=w;        // continue
-            w=2*v+1;
+            exchange(0, n, a);
+            downheap(0, a, n);
         }
     }
 
-    private void exchange(int i, int j, int a[])
-    {
-        int t=a[i];
-        a[i]=a[j];
-        a[j]=t;
+    private void buildheap(int a[], int n) {
+        for (int v = n / 2 - 1; v >= 0; v--) {
+            downheap(v, a, n);
+        }
+    }
+
+    private void downheap(int v, int a[], int n) {
+        int w = 2 * v + 1;    // first descendant of v
+        while (w < n) {
+            if (w + 1 < n) // is there a second descendant?
+            {
+                if (a[w + 1] > a[w]) {
+                    w++;
+                }
+            }
+            // w is the descendant of v with maximum label
+
+            if (a[v] >= a[w]) {
+                return;  // v has heap property
+            }            // otherwise
+            exchange(v, w, a);  // exchange labels of v and w
+            v = w;        // continue
+            w = 2 * v + 1;
+        }
+    }
+
+    private void exchange(int i, int j, int a[]) {
+        int t = a[i];
+        a[i] = a[j];
+        a[j] = t;
     }
 }
