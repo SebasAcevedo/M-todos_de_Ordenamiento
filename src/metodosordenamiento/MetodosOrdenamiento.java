@@ -90,10 +90,21 @@ public class MetodosOrdenamiento {
                             break;
                         case 4:
                             int v[] = new int[vec1.length];
+                            long TiemI = System.currentTimeMillis();
                             v = obj2.OrdenaMerge(vec1);
                             for (i = 0; i < v.length; i++) {
                                 System.out.println("Vector ordenado: " + v[i]);
                             }
+                        long TiemF = System.currentTimeMillis();
+                            long Milisegund = TiemF - TiemI;
+                            long Ho = Milisegund / 3600000;
+                            long Restoho = Milisegund % 3600000;
+                            long Minu = Restoho / 60000;
+                            long Restominu = Restoho % 60000;
+                            long Segun = Restominu / 1000;
+                            long Restosegun = Restominu % 1000;
+                            System.out.println("El tiempo gastado en ordenar el vector fue de: Hora: " + Ho + " Minutos: " + Minu + " Segundos: " + Segun + " Milisegundos: " + Restosegun);
+                            break;
                     }
                     System.out.println("Desea comparar el mismo vector con otro metodo de ordenamiento?(S/N)");
                     Resp = sc.next();
