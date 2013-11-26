@@ -152,43 +152,44 @@ public class Ordenamientos {
         return L;
     }
 
-    public void heapSort(int[] data, int n) {
-        int unsorted; // Size of the unsorted part of the array
-        int temp;     // Used during the swapping of two array locations
+   private void heapSort(int a[],int n)
+    {
+        buildheap(a, n);
+        while (n>1)
+        {
+            n--;
+            exchange (0, n, a);
+            downheap (0, a, n);
+        } 
+    }
 
-        makeHeap(data, n);
+    private void buildheap(int a[],int n)
+    {
+        for (int v=n/2-1; v>=0; v--)
+            downheap (v, a, n);
+    }
 
-        unsorted = n;
+    private void downheap(int v, int a[], int n)
+    {
+        int w=2*v+1;    // first descendant of v
+        while (w<n)
+        {
+            if (w+1<n)    // is there a second descendant?
+                if (a[w+1]>a[w]) w++;
+            // w is the descendant of v with maximum label
 
-        while (unsorted > 1) {
-            unsorted--;
-
-            // Swap the largest element (data[0]) with the final element of unsorted part  
-            temp = data[0];
-            data[0] = data[unsorted];
-            data[unsorted] = temp;
-
-            reheapifyDown(data, unsorted);
+            if (a[v]>=a[w]) return;  // v has heap property
+            // otherwise
+            exchange(v, w, a);  // exchange labels of v and w
+            v=w;        // continue
+            w=2*v+1;
         }
     }
 
-    private static void makeHeap(int[] data, int n) // Precondition: data is an array with at least n elements.
-    // Postcondition: The elements of data have been rearranged so that the
-    // complete binary tree represented by this array is a heap.
+    private void exchange(int i, int j, int a[])
     {
-        System.err.println("The student needs to implement the makeHeap and");
-        System.err.println("reheapifyDown methods before the heapsort can be used.");
-        System.exit(0);
-    }
-
-    private static void reheapifyDown(int[] data, int n) // Precondition: n > 0, and data is an array with at least n elements. These
-    // elements form a heap, except that data[0] may be in an incorrect
-    // location.
-    // Postcondition: The data values have been rearranged so that the first
-    // n elements of data now form a heap.
-    {
-        System.err.println("The student needs to implement the makeHeap and");
-        System.err.println("reheapifyDown methods before the heapsort can be used.");
-        System.exit(0);
+        int t=a[i];
+        a[i]=a[j];
+        a[j]=t;
     }
 }
