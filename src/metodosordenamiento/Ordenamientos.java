@@ -236,7 +236,7 @@ public class Ordenamientos {
 
             if (a[v] >= a[w]) {
                 return;  // v tiane una propiedad heap
-            }            // otherwise
+            }            // por otro lado
             exchange(v, w, a);  // intercambia etiquetas de v y w
             v = w;        // continua
             w = 2 * v + 1;
