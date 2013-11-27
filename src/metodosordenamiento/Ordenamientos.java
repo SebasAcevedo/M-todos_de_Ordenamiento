@@ -13,12 +13,13 @@ import java.util.Arrays;
  * @author Hogar
  */
 public class Ordenamientos {
-/*
-    Este metodo de ordenamiento se basa en los valores de los dígitos reales en las 
-   representaciones de posiciones de los números que se ordenan.
-    Por ejemplo el número 235 se escribe 2 en la posición de centenas, un 3 en 
-    la posición de decenas y un 5 en la posición de unidades.
-    */
+    /*
+     Este metodo de ordenamiento se basa en los valores de los dígitos reales en las 
+     representaciones de posiciones de los números que se ordenan.
+     Por ejemplo el número 235 se escribe 2 en la posición de centenas, un 3 en 
+     la posición de decenas y un 5 en la posición de unidades.
+     */
+
     public void radix(int vec[]) {
 
         if (vec.length == 0) {
@@ -58,18 +59,19 @@ public class Ordenamientos {
             }
         }
     }
-/*
-    En este metodo de ordenamiento se elige un elemento de la lista de elementos a ordenar, al que se le llama pivote.
-    Se vuelven a colocar los demás elementos de la lista a cada lado del pivote, 
-    de manera que a un lado queden todos los menores que él, y al otro los mayores. 
-    Los elementos iguales al pivote pueden ser colocados tanto a su derecha como
-    a su izquierda. En este momento, el pivote ocupa exactamente el lugar que le
-    corresponderá en la lista ordenada.
-    La lista queda separada en dos sublistas, una formada por los elementos a la 
-    izquierda del pivote, y otra por los elementos a su derecha.
-    Repetir este proceso de forma recursiva para cada sublista mientras éstas 
-    contengan más de un elemento. Una vez terminado este proceso todos los elementos estarán ordenados.
-    */
+    /*
+     En este metodo de ordenamiento se elige un elemento de la lista de elementos a ordenar, al que se le llama pivote.
+     Se vuelven a colocar los demás elementos de la lista a cada lado del pivote, 
+     de manera que a un lado queden todos los menores que él, y al otro los mayores. 
+     Los elementos iguales al pivote pueden ser colocados tanto a su derecha como
+     a su izquierda. En este momento, el pivote ocupa exactamente el lugar que le
+     corresponderá en la lista ordenada.
+     La lista queda separada en dos sublistas, una formada por los elementos a la 
+     izquierda del pivote, y otra por los elementos a su derecha.
+     Repetir este proceso de forma recursiva para cada sublista mientras éstas 
+     contengan más de un elemento. Una vez terminado este proceso todos los elementos estarán ordenados.
+     */
+
     public void Quick(int vec[], int Prim, int Ult) {
         int i = Prim, j = Ult;
         int pivote = vec[(Prim + Ult) / 2];
@@ -133,14 +135,17 @@ public class Ordenamientos {
     }
 
     /*
-     el ordenamiento por mezcla funciona de la siguiente manera:
+     El ordenamiento por mezcla funciona de la siguiente manera:
      Si la longitud de la lista es 0 ó 1, entonces ya está ordenada. En otro caso:
      Dividir la lista desordenada en dos sublistas de aproximadamente la mitad del tamaño.
      Ordenar cada sublista recursivamente aplicando el ordenamiento por mezcla.
      Mezclar las dos sublistas en una sola lista ordenada.
-     El ordenamiento por mezcla incorpora dos ideas principales para mejorar su tiempo de ejecución:
+     El ordenamiento por mezcla incorpora dos ideas principales para mejorar su 
+     tiempo de ejecución:
      Una lista pequeña necesitará menos pasos para ordenarse que una lista grande.
-     Se necesitan menos pasos para construir una lista ordenada a partir de dos listas también ordenadas, que a partir de dos listas desordenadas. Por ejemplo, sólo será necesario entrelazar cada lista una vez que están ordenadas.
+     Se necesitan menos pasos para construir una lista ordenada a partir de dos 
+     listas también ordenadas, que a partir de dos listas desordenadas. 
+     Por ejemplo, sólo será necesario entrelazar cada lista una vez que están ordenadas.
      */
     public int[] OrdenaMerge(int[] L) {
         int n = L.length;
@@ -196,6 +201,13 @@ public class Ordenamientos {
         return L;
     }
 
+    /*
+    El algoritmo de ordenación por montículos o Heap Sort recorre el conjunto de
+    elementos desde la posición de la mitad hasta la primera organizando el 
+    montículo correspondiente a dicho elemento.  Una vez terminado este proceso,
+    se inicia el proceso de ordenación intercambiando el primer elemento por el 
+    último del arreglo y reorganizando el montículo a partir de la primera posición.
+    */
     public void heapSort(int a[], int n) {
         buildheap(a, n);
         while (n > 1) {
@@ -212,21 +224,21 @@ public class Ordenamientos {
     }
 
     private void downheap(int v, int a[], int n) {
-        int w = 2 * v + 1;    // first descendant of v
+        int w = 2 * v + 1;    // Primer descendiente de v
         while (w < n) {
-            if (w + 1 < n) // is there a second descendant?
+            if (w + 1 < n) // es esto un segundo descendiente?
             {
                 if (a[w + 1] > a[w]) {
                     w++;
                 }
             }
-            // w is the descendant of v with maximum label
+            // w es el descendiente de v con el maximo numero de etiquetas
 
             if (a[v] >= a[w]) {
-                return;  // v has heap property
+                return;  // v tiane una propiedad heap
             }            // otherwise
-            exchange(v, w, a);  // exchange labels of v and w
-            v = w;        // continue
+            exchange(v, w, a);  // intercambia etiquetas de v y w
+            v = w;        // continua
             w = 2 * v + 1;
         }
     }
