@@ -13,12 +13,18 @@ import java.util.Arrays;
  * @author Hogar
  */
 public class Ordenamientos {
+/*
+    Este metodo de ordenamiento se basa en los valores de los dígitos reales en las 
+   representaciones de posiciones de los números que se ordenan.
+    Por ejemplo el número 235 se escribe 2 en la posición de centenas, un 3 en 
+    la posición de decenas y un 5 en la posición de unidades.
+    */
+    public void radix(int vec[]) {
 
-    public static void radix(int[] n) {
-        if (n.length == 0) {
+        if (vec.length == 0) {
             return;
         }
-        int[][] np = new int[n.length][2];
+        int[][] np = new int[vec.length][2];
         int[] q = new int[0x100];
         int i, j, k, l, f = 0;
         for (k = 0; k < 4; k++) {
@@ -29,8 +35,8 @@ public class Ordenamientos {
             for (i = 0; i < q.length; i++) {
                 q[i] = -1;
             }
-            for (f = i = 0; i < n.length; i++) {
-                j = ((0xFF << (k << 3)) & n[i]) >> (k << 3);
+            for (f = i = 0; i < vec.length; i++) {
+                j = ((0xFF << (k << 3)) & vec[i]) >> (k << 3);
                 if (q[j] == -1) {
                     l = q[j] = f;
                 } else {
@@ -42,17 +48,28 @@ public class Ordenamientos {
                     l = np[l][1];
                 }
                 f = np[f][1];
-                np[l][0] = n[i];
+                np[l][0] = vec[i];
                 np[l][1] = -1;
             }
             for (l = q[i = j = 0]; i < 0x100; i++) {
                 for (l = q[i]; l != -1; l = np[l][1]) {
-                    n[j++] = np[l][0];
+                    vec[j++] = np[l][0];
                 }
             }
         }
     }
-
+/*
+    En este metodo de ordenamiento se elige un elemento de la lista de elementos a ordenar, al que se le llama pivote.
+    Se vuelven a colocar los demás elementos de la lista a cada lado del pivote, 
+    de manera que a un lado queden todos los menores que él, y al otro los mayores. 
+    Los elementos iguales al pivote pueden ser colocados tanto a su derecha como
+    a su izquierda. En este momento, el pivote ocupa exactamente el lugar que le
+    corresponderá en la lista ordenada.
+    La lista queda separada en dos sublistas, una formada por los elementos a la 
+    izquierda del pivote, y otra por los elementos a su derecha.
+    Repetir este proceso de forma recursiva para cada sublista mientras éstas 
+    contengan más de un elemento. Una vez terminado este proceso todos los elementos estarán ordenados.
+    */
     public void Quick(int vec[], int Prim, int Ult) {
         int i = Prim, j = Ult;
         int pivote = vec[(Prim + Ult) / 2];
