@@ -83,6 +83,23 @@ public class Ordenamientos {
         }
     }
 
+    /*
+     El ordenamiento por casilleros (bucket sort en inglés) distribuye todos los
+     elementos a ordenar entre un número finito de casilleros. Cada casillero 
+     sólo puede contener los elementos que cumplan unas determinadas condiciones.
+     Las condiciones deben ser excluyentes entre sí, para evitar que un elemento pueda ser 
+     clasificado en dos casilleros distintos. Después cada uno de esos casilleros
+     se ordena individualmente con otro algoritmo de ordenación (que podría ser 
+     distinto según el casillero), o se aplica recursivamente este algoritmo para
+     obtener casilleros con menos elementos.
+    
+     El algoritmo contiene los siguientes pasos:
+
+     Crear una colección de casilleros vacíos
+     Colocar cada elemento a ordenar en un único casillero
+     Ordenar individualmente cada casillero
+     devolver los elementos de cada casillero concatenados por orden
+     */
     public void bucketSort(int arr[]) {
         int i, j;
         int count[] = new int[arr.length];
@@ -98,6 +115,16 @@ public class Ordenamientos {
 
     }
 
+    /*
+     el ordenamiento por mezcla funciona de la siguiente manera:
+     Si la longitud de la lista es 0 ó 1, entonces ya está ordenada. En otro caso:
+     Dividir la lista desordenada en dos sublistas de aproximadamente la mitad del tamaño.
+     Ordenar cada sublista recursivamente aplicando el ordenamiento por mezcla.
+     Mezclar las dos sublistas en una sola lista ordenada.
+     El ordenamiento por mezcla incorpora dos ideas principales para mejorar su tiempo de ejecución:
+     Una lista pequeña necesitará menos pasos para ordenarse que una lista grande.
+     Se necesitan menos pasos para construir una lista ordenada a partir de dos listas también ordenadas, que a partir de dos listas desordenadas. Por ejemplo, sólo será necesario entrelazar cada lista una vez que están ordenadas.
+     */
     public int[] OrdenaMerge(int[] L) {
         int n = L.length;
 
