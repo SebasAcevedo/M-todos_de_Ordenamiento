@@ -25,7 +25,7 @@ public class Ordenamientos {
             return;
         }
         int[][] np = new int[vec.length][2];
-        int[] q = new int[0x100];
+        int[] q = new int[0x100]; //256
         int i, j, k, l, f = 0;
         for (k = 0; k < 4; k++) {
             for (i = 0; i < (np.length - 1); i++) {
@@ -36,7 +36,7 @@ public class Ordenamientos {
                 q[i] = -1;
             }
             for (f = i = 0; i < vec.length; i++) {
-                j = ((0xFF << (k << 3)) & vec[i]) >> (k << 3);
+                j = ((0xFF << (k << 3)) & vec[i]) >> (k << 3);//255
                 if (q[j] == -1) {
                     l = q[j] = f;
                 } else {
